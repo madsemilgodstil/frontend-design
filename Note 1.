@@ -1,0 +1,54 @@
+* + * = Et element 
+… direkte ved siden af ​​et element.
+
+.column :last-child = Et element forudsat at det er det sidste barn af dets forælder et eller andet sted 
+... i et element med klasse column.
+
+li:nth-of-type(3) = Et <li>element forudsat at det er den 3. af sin type  i sin overordnede.
+
+a :hover = når du hover et barn af linket
+
+p ~ p = Et <p> element ... efter et <p> element.
+
+
+button:is(:hover, :focus-visible) = Selektoren button:is(:hover, :focus-visible) målretter <button>-elementer, når de enten er i :hover-tilstand (brugeren holder musen over knappen) eller i :focus-visible-tilstand (knappen har tastaturfokus og er synligt fokuseret).
+
+
+section > p:not(:first-of-type, :last-child) = Selektoren p:not(:first-of-type, :last-child) fungerer som følger:
+Den vælger alle <p>-elementer, der ikke er det første <p> element inden for deres forælder og ikke er det sidste barn af deres forælder.
+
+
+:is(ul, ol) > li + li =  Kombinerer vi disse dele, matcher :is(ul, ol) > li + li følgende:
+Den målretter <li>-elementer, som:
+Er direkte børn (>) af enten en <ul> eller <ol> (:is(ul, ol)).
+Umiddelbart følger (+) efter et andet <li>-element.
+
+
+ul[class] > :first-child = Kombineret betyder ul[class] > :first-child følgende:
+Den målretter det første barn (:first-child) af ethvert <ul>-element, som har en class-attribut (ul[class]).
+Dette første barn kan være ethvert element (f.eks. <li>, <div>, osv.), så længe det er det første element direkte inde i <ul>.
+
+
+:nth-last-child(1 of .a) =  Kombinationen :nth-last-child(1 of .a) gør følgende:
+Vælg det sidste barn (det første barn, når der tælles bagfra) blandt alle børn med klassen .a inden for en given forælder.
+
+
+div:has(img) = Kombinerer vi disse dele, betyder div:has(img) følgende:
+Vælg ethvert <div>-element, der indeholder mindst ét <img>-element som en efterkommer (uanset om det er et direkte barn, barnebarn osv.).
+
+
+a {
+  &:hover {...}
+} = a:
+Dette er en CSS-selektor, der målretter <a>-elementer (hyperlinks).
+&:
+I Sass og LESS er & en parent-selektor, der refererer til dens overordnede selektor. Det betyder "den nuværende kontekst".
+I dette tilfælde betyder & i &:hover "det overordnede a-element", hvilket gør &:hover til a:hover.
+:hover:
+Dette er en pseudo-klasse, der bruges til at anvende en stil, når en bruger holder musen over elementet. For et <a>-element vil :hover blive aktiveret, når musen er over hyperlinket.
+{...}:
+Pladsen inde i de krøllede parenteser {...} er beregnet til CSS-egenskaber, der vil blive anvendt, når :hover-tilstanden er aktiv. Dette kunne være enhver CSS-stil, såsom ændring af farve, baggrundsfarve, tekstdekoration osv.
+
+
+
+li:nth-last-child(odd):first-child = Vælg det første liste-element i rækken, men kun hvis det samtidigt er ulige, hvis man tæller fra slutningen af listen.
